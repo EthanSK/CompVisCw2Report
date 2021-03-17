@@ -3,11 +3,11 @@
 We require a single time step, $t$, that allows for clear differentiation between the different objects. Given the large amount of sensor data provided and the large number of time steps, we found that it would be infeasible to select the optimal time step purely qualitatively. Given this, we defined a quantitative metric to find the optimal time step, $t_o$. We first define the trial aggregate, $T\left(s, x, t\right)$, to be the set of all 10 trial readings for a given sensor $s$, object $x$ and time step $t$. We then aggregate this as mean of variances for all objects and sensors for a given time step to give the trial variance as given by \autoref{VT},
 
 \begin{equation}
-    \overline{V_T}(t) = \sum_{s}^{n_s} \sum_{x}^{n_x} \frac{Var\left(T\left(s, x, t\right)\right)}{n_sn_x}
+    \overline{V_T}(t) = \frac{1}{n_sn_x}\sum_{s}^{n_s} \sum_{x}^{n_x} Var\left(T\left(s, x, t\right)\right)
     \label{VT}
 \end{equation}
 
 \begin{equation}
-    \overline{A_T}(t) = \sum_{s}^{n_s} Var\left(\sum_{x}^{n_x} \frac{\overline{T\left(x, s, t\right)}}{n_sn_x}\right)
+    \overline{A_T}(t) = \frac{1}{n_s}\sum_{s}^{n_s} Var\left(\sum_{x}^{n_x} \overline{T\left(x, s, t\right)}\right)
     \label{AA}
 \end{equation}
